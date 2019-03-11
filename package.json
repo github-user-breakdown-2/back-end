@@ -4,11 +4,14 @@
   "description": "Back-End repo for github-user-breakdown-2",
   "main": "index.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.0",
     "knex": "^0.16.3",
+    "node": "^11.11.0",
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {

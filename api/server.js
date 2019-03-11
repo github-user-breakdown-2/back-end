@@ -1,12 +1,13 @@
 const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
+
+const serverMiddleware = require('./serverMiddleware');
+const registerRouter = require('./register/registerRouter');
 
 const server = express();
 
-server.use(express.json());
-server.use(helmet());
-server.use(cors());
+serverMiddleware(server);
+
+server.use('/api/register', registerRouter);
 
 server.get('/', (req, res) => {
     res.status(200).json({ message: "Server working" });
