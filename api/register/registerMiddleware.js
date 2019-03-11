@@ -17,7 +17,7 @@ module.exports = {
                     return;
                 }
             } catch (err) {
-                res.status(404).json({error: 'Fetching users.'});
+                res.status(404).json({error: 'Error fetching users.'});
             }
         }
     },

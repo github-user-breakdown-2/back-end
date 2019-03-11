@@ -10,10 +10,7 @@ describe('registerRouter', () => {
         beforeEach(async () => {
             await db('appUsers').truncate();
         })
-    
-        afterEach(async () => {
-            await db('appUsers').truncate();
-        })
+
 
         it('should return 201 OK with corect JSON resp', async () => {
             const newUser1 = {
