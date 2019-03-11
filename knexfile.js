@@ -4,7 +4,7 @@ const localPgConnection = {
   user: 'admin',
   password: 'password'
 }
-const prodDbConnection = process.env.DATABASE_URL || localPgConnection;
+const prodDbConnection = process.env.HEROKU_POSTGRESQL_BRONZE_URL || localPgConnection;
 
 module.exports = {
 
