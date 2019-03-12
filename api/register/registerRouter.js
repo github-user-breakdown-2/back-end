@@ -10,7 +10,7 @@ router.post('/', routerMiddleware.checkUser, async (req, res) => {
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
     try {
-        // console.log(user);
+        console.log(appUsers.add(user));
         // const registeredUser = await appUsers.add(user);
         res.status(201).json(user);
         // res.status(201).json({ email, password });

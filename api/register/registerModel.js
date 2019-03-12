@@ -1,8 +1,8 @@
 const db = require('../../data/dbConfig');
 
 module.exports = {
-    add: async function(appUser) {
-        const [id] = await db('appUsers').insert(appUser);
+    add: async function(user) {
+        const [id] = await db('appUsers').insert(user);
         return db('appUsers').where({ id }).first();
     },
     getUserByEmail: function(email) {
