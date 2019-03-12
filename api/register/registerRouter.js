@@ -11,7 +11,7 @@ router.post('/', routerMiddleware.checkUser, async (req, res) => {
     try {
         // const registeredUser = await appUsers.add({ email, password });
         // res.status(201).json(registeredUser);
-        res.status(201).json({reqBody: req.body});
+        res.status(201).json({ email, password });
 
     } catch (err) {
         res.status(500).json({ error: 'Error registering the user.' });
