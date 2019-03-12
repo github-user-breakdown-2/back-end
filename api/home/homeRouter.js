@@ -10,5 +10,4 @@ router.get('/', homeMiddleware.restricted, (req, res) => {
     }
 });
 
-
 module.exports = router;
