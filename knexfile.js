@@ -38,7 +38,8 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: prodDbConnection,
+    // connection: prodDbConnection,
+    connection: process.env.HEROKU_POSTGRESQL_BRONZE_UR,
     migrations: {
       directory: './data/migrations',
     },
