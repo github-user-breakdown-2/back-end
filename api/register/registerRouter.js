@@ -9,7 +9,7 @@ router.post('/', routerMiddleware.checkUser, async (req, res) => {
     const hash = bcrypt.hashSync(password, 10);
     password = hash;
     try {
-        const registeredUser = await appUsers.add({ email, password});
+        const registeredUser = await appUsers.add({ email, password });
         res.status(201).json(registeredUser);
     } catch (err) {
         res.status(500).json({ error: 'Error registering the user.' });
