@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const axios = require('axios');
 
-const homeMiddleware = require('../home/homeMiddleware');
+const homeMiddleware = require('../homeMiddleware');
 
 router.get('/', homeMiddleware.restricted, async (req, res) => {
     let { username } = req.body

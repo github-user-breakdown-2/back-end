@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken'); 
 
-const secrets = process.env.JWT_SECRET;
+const secrets = process.env.JWT_SECRET || process.env.JWT_SECRET_DEV;
 
 function loginToken(user) {
     const payload = {
@@ -11,7 +11,6 @@ function loginToken(user) {
     const options = {
         expiresIn: '1d',
     }
-
     return jwt.sign(payload, secrets, options);
 }
 
