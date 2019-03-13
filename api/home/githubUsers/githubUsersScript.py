@@ -6,17 +6,16 @@ import dateutil.parser
 import json
 import requests
 import sys
-import os
-from os.path import join, dirname
-from dotenv import load_dotenv
+# import os
+# from os.path import join, dirname
+# from dotenv import load_dotenv
  
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+# dotenv_path = join(dirname(__file__), '.env')
+# load_dotenv(dotenv_path)
  
 # env vars
-TOKEN = os.getenv('PY_SCRIPT_TOKEN')
-
-# env vars
+# TOKEN = os.getenv('PY_SCRIPT_TOKEN')
+TOKEN = '39116152cab99c33d649154f481212616af0df3c'
 HEADERS = headers = {'Authorization': 'token ' + TOKEN}
 
 def get_user(username):
