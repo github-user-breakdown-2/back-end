@@ -9,7 +9,7 @@ function callSummary(req, res) {
     const username = req.params.username;
 
     const process = spawn('python', [
-        './githubUsersScript.py',
+        'githubUsersScript.py',
         username,
         'summary'
     ]);
@@ -37,7 +37,7 @@ function callDetailed(req, res) {
     const username = req.params.username;
 
     const process = spawn('python', [
-        './githubUsersScript.py',
+        'githubUsersScript.py',
         username,
         'detailed'
     ]);
