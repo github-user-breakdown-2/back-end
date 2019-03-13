@@ -5,9 +5,6 @@ Back-End repo for github-user-breakdown-2
 
 Back-end for github-user-breakdown-2 app which accepts a github username and returns a breakdown of that user's activity using the data provided by GitHub for that username.
 
-### Deployment
-Back-end deployed to https://github-user-breakdown-app.herokuapp.com/
-
 ### Dependencies 
 
 `axios` `bcryptjs` `cors` `dotenv` `express` `helmet` `jsonwebtoken` `knex` `pg` `sqlite3`
@@ -18,7 +15,25 @@ Back-end deployed to https://github-user-breakdown-app.herokuapp.com/
 
 ## Data
 
-Database configured with knex and sqlite3. Knex migrations and seeds located within `data` directory.
+Database configured with knex. Knex migrations and seeds located within `data` directory.
+
+### Production
+
+Production deployed to https://github-user-breakdown-app.herokuapp.com/
+
+Production uses Heroku Postgress database add-on. Heroku Config Vars include `DATABASE_URL`, `DB_ENV` and `JWT_SECRET`.
+
+Connect migrations to production with command line: `npx heroku run knex migrate:latest -a github-user-breakdown-app`
+
+### Testing & Development
+
+Testing and development uses sqlite3 database. Environments and variables set with local .env file. Testing completed with `jest` and `supertest`.
+
+Connect migrations to development with command line: `knex migrate:latest`
+Connect seed to development with command line: `knex seed:run`
+
+Connect migrations to testing with command line: `npx knex migrate:latest --env=testing`
+Connect seed to development with command line: `npx knex seed:run --env=testing`
 
 ## Api
 
