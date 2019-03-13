@@ -29,10 +29,14 @@ Connect migrations to production with command line: `npx heroku run knex migrate
 
 Testing and development uses sqlite3 database. Environments and variables set with local .env file. Testing completed with `jest` and `supertest`.
 
-Connect migrations to development with command line: `knex migrate:latest`
+
+Connect migrations to development with command line: `knex migrate:latest`.
+
 Connect seed to development with command line: `knex seed:run`
 
-Connect migrations to testing with command line: `npx knex migrate:latest --env=testing`
+
+Connect migrations to testing with command line: `npx knex migrate:latest --env=testing`.
+
 Connect seed to development with command line: `npx knex seed:run --env=testing`
 
 ## Api
@@ -69,4 +73,6 @@ Endpoint: `/api/app/appUser`
 
 Endpoint: `/api/app/githubUser`
 
-`GET /`: Takes in a github's username. Accesses the github api. Returns an array of all github users matching the username parameters.
+`GET /summary`: Takes in a username request. Connects to Python script written by data science engineers which accesses github api to retrieve information of specified user. Returns json object with user's list of repos and names, list languages and count, most popular repo, username, repo count, and avatar. 
+
+`GET /detailed`: Takes in a username request. Connects to Python script written by data science engineers which accesses github api to retrieve information of specified user. Returns json object with each day of week with number of commits per day and each hour of day with number of commits per hour. 
