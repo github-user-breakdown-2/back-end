@@ -1,4 +1,4 @@
-dateutil.parser
+dateutil
 json
 requests
 sys
