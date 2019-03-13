@@ -1,17 +1,34 @@
 const router = require('express').Router();
-const axios = require('axios');
 
-const homeMiddleware = require('../homeMiddleware');
+const spawn = require('child_process').spawn
 
-router.get('/', homeMiddleware.restricted, async (req, res) => {
+router.get('/summary', callSummary);
+
+function callSummary(req, res) {
+
     let { username } = req.body
-    try {
-        const users = await axios.get(`https://api.github.com/search/users?q=${username}`);
-        const usersCompressed = users.data.items.map(user => user = { login: user.login, html_url: user.html_url } );
-        res.status(200).json(usersCompressed);
-    } catch (err) {
-        res.status(500).json({ error: 'Accessing page.' });
-    }
-});
+
+    const process = spawn('python', [
+        './api/home/githubUsers/githubUsersScript.py',
+        username,
+        'summary'
+    ]);
+
+    process.stdout.on('data', (data) => {
+        const dataString = data.toString();
+        const dataObj = JSON.parse(dataString)
+        res.status(200).json(dataObj);
+    });
+
+    process.stderr.on('data', (data) => {
+        const dataString = data.toString();
+        const dataObj = JSON.parse(dataString)
+        res.status(500).json(dataObj);
+    });
+
+    process.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+    });
+}
 
 module.exports = router;
