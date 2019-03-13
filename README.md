@@ -13,9 +13,25 @@ Back-end for github-user-breakdown-2 app which accepts a github username and ret
 
 `cross-env` `jest` `nodemon` `supertest` 
 
-## Data
+## Knex
 
 Database configured with knex. Knex migrations and seeds located within `data` directory.
+
+### Development
+
+Development uses sqlite3 database. Environments and variables set with local .env file. Testing completed with `jest` and `supertest`.
+
+Connect migrations to development with command line: `knex migrate:latest`.
+
+Connect seed to development with command line: `knex seed:run`
+
+### Testing
+
+Testing uses sqlite3 database. Environments and variables set with local .env file. Testing completed with `jest` and `supertest`.
+
+Connect migrations to testing with command line: `npx knex migrate:latest --env=testing`.
+
+Connect seed to testing with command line: `npx knex seed:run --env=testing`
 
 ### Production
 
@@ -25,19 +41,16 @@ Production uses Heroku Postgress database add-on. Heroku Config Vars include `DA
 
 Connect migrations to production with command line: `npx heroku run knex migrate:latest -a github-user-breakdown-app`
 
-### Testing & Development
+## Migrations
 
-Testing and development uses sqlite3 database. Environments and variables set with local .env file. Testing completed with `jest` and `supertest`.
+### App User Table
 
+| Name     | Data type     | Primary Key | Unique | Not NULL |
+| ---------|:-------------:|:-----------:|:------:|:--------:|
+| id       | interger      | +           | -      | -        |
+| email    | varchar (255) | -           | +      | +        |
+| password | varchar(255)  | -           | +      | +        |
 
-Connect migrations to development with command line: `knex migrate:latest`.
-
-Connect seed to development with command line: `knex seed:run`
-
-
-Connect migrations to testing with command line: `npx knex migrate:latest --env=testing`.
-
-Connect seed to development with command line: `npx knex seed:run --env=testing`
 
 ## Api
 
