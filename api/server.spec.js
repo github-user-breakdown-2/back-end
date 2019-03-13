@@ -24,10 +24,6 @@ describe('server.js', () => {
                 await db('appUsers').truncate();
                 return res = await request(server).post('/api/register').send(newUser);
             })
-
-            afterEach ( async () => {
-                await db('appUsers').truncate();
-            })
     
             it('should return 201 OK with JSON resp', () => {
                 expect(res.status).toBe(201);
@@ -71,6 +67,42 @@ describe('server.js', () => {
                 expect(res.body.id).toBe(1);
                 expect(res.body.email).toBe(newUser.email);
                 expect(res.body.token).toBeDefined();
+            })
+    
+        });
+    
+    });
+
+    describe('HomeRouter', () => {
+
+        describe('GET /', () => {
+    
+            const newUser = {
+                email: 'example@email.com',
+                password: 'password'
+            }
+    
+            let res; 
+    
+            beforeEach( async () => {
+                await db('appUsers').truncate();
+                await request(server).post('/api/register').send(newUser);
+                const user = await request(server).post('/api/login').send(newUser);
+                return res = await
+                    request(server)
+                    .get('/api/app')
+                    .set('Authorization', `${user.body.token}`)
+            })
+
+            it('should return 200 OK with JSON resp', async () => {
+                expect(res.status).toBe(200);
+                expect(res.type).toBe('application/json');
+            })
+    
+            it('should return decoded token', () => {
+                expect(res.body.decodedToken).toBeDefined();
+                expect(res.body.decodedToken.email).toBe(newUser.email);
+                expect(res.body.decodedToken.subject).toBe(1);
             })
     
         });
