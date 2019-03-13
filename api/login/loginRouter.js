@@ -11,11 +11,12 @@ router.post('/',loginMiddleware.checkUser, async (req, res) => {
     try {
         const user = await appUsers.getUserByEmail(email);
         if (user) {
-            if (bcrypt.compareSync(password, user.password)) {
+            const verified = await bcrypt.compareSync(password, user.password);
+            if (verified) {
 
                 const token = loginToken(user); 
                 let { id, email } = user
-                res.status(200).json({
+                res.status(201).json({
                     id,
                     email,
                     token
