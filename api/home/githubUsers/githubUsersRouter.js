@@ -22,7 +22,7 @@ function callSummary(req, res) {
 
     process.stderr.on('data', (data) => {
         console.log(`stderr: ${data}`);
-        res.status(500).json({ message: 'Error accessing python script'});
+        res.status(500).json({ message: data});
     });
 
     process.on('close', (code) => {
