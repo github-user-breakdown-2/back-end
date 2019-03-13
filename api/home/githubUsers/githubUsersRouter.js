@@ -7,6 +7,9 @@ router.get('/summary', callSummary);
 function callSummary(req, res) {
 
     let { username } = req.body
+    console.log(req.body);
+    console.log(req.query);
+
 
     const process = spawn('python', [
         './api/home/githubUsers/githubUsersScript.py',
