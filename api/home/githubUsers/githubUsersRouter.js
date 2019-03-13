@@ -22,7 +22,7 @@ function callSummary(req, res) {
 
     process.stderr.on('data', (data) => {
         console.log(`stderr: ${data}`);
-        res.status(500).json({ message: data});
+        res.status(500).json({ message: data.toString()});
     });
 
     process.on('close', (code) => {
