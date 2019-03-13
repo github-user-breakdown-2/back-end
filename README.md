@@ -5,6 +5,9 @@ Back-End repo for github-user-breakdown-2
 
 Back-end for github-user-breakdown-2 app which accepts a github username and returns a breakdown of that user's activity using the data provided by GitHub for that username.
 
+### Deployment
+Back-end deployed to https://github-user-breakdown-app.herokuapp.com/
+
 ### Dependencies 
 
 `axios` `bcryptjs` `cors` `dotenv` `express` `helmet` `jsonwebtoken` `knex` `pg` `sqlite3`
