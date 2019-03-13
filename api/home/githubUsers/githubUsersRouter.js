@@ -2,14 +2,11 @@ const router = require('express').Router();
 
 const spawn = require('child_process').spawn
 
-router.get('/summary', callSummary);
+router.get('/summary/:username', callSummary);
 
 function callSummary(req, res) {
 
-    let { username } = req.body
-    console.log(req.body);
-    console.log(req.query);
-
+    const username = req.params.username;
 
     const process = spawn('python', [
         './api/home/githubUsers/githubUsersScript.py',
@@ -33,11 +30,11 @@ function callSummary(req, res) {
     });
 }
 
-router.get('/detailed', callDetailed);
+router.get('/detailed/:username', callDetailed);
 
 function callDetailed(req, res) {
 
-    let { username } = req.body
+    const username = req.params.username;
 
     const process = spawn('python', [
         './api/home/githubUsers/githubUsersScript.py',
