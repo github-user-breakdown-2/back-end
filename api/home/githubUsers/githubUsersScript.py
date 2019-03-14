@@ -2,8 +2,8 @@
 Retreives user summary data given their GitHub username
 """
 
-# import dateutil.parser
-import dateutil
+import dateutil.parser
+# import dateutil
 import json
 import requests
 import sys
