@@ -23,7 +23,7 @@ Development uses sqlite3 database. Environments and variables set with local .en
 
 Connect migrations to development with command line: `knex migrate:latest`.
 
-Connect seed to development with command line: `knex seed:run`
+Connect seed to development with command line: `knex seed:run`.
 
 ### Testing
 
@@ -31,15 +31,15 @@ Testing uses sqlite3 database. Environments and variables set with local .env fi
 
 Connect migrations to testing with command line: `npx knex migrate:latest --env=testing`.
 
-Connect seed to testing with command line: `npx knex seed:run --env=testing`
+Connect seed to testing with command line: `npx knex seed:run --env=testing`.
 
 ### Production
 
 Production deployed to https://github-user-breakdown-app.herokuapp.com/
 
-Production uses Heroku Postgress database add-on. Heroku Config Vars include `DATABASE_URL`, `DB_ENV` and `JWT_SECRET`.
+Production uses Heroku Postgress database add-on. Heroku Config Vars include `DATABASE_URL`, `DB_ENV`, `JWT_SECRET` and `PYTHON_PATH`. Heroku buildpacks are `heroku/python` and `heroku/nodejs` in that order. 
 
-Connect migrations to production with command line: `npx heroku run knex migrate:latest -a github-user-breakdown-app`
+Connect migrations to production with command line: `npx heroku run knex migrate:latest -a github-user-breakdown-app`.
 
 ## Migrations
 
