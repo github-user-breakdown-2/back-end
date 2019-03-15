@@ -1,6 +1,3 @@
-const jwt = require('jsonwebtoken'); 
-const secrets = process.env.JWT_SECRET;
-
 module.exports = {
         
     checkUser: function(req, res, next) {

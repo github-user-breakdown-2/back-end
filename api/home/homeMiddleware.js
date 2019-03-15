@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken'); 
-const secrets = process.env.JWT_SECRET;
+const secrets = process.env.JWT_SECRET || process.env.JWT_SECRET_DEV;
 
 module.exports = {
 
